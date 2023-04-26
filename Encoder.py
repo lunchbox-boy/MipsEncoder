@@ -1,6 +1,6 @@
 import re
 
-instructions = "instructions will go here \n"
+instructions = "Choose operation \n add \n sub\n or\n and\n sll\n"
 
 funct_dict = {
     # function: (function, ({rs} argument Position), ({rt} argument Position), ({rd} argument Position), ({shift amount} argument Position))
@@ -27,9 +27,11 @@ def numberOfFunctionArguments(function):
         if num > -1:
             count += 1
     #remove the function itself
+    
     return count - 1
 
 def numberOfInputArguments(command):
+    
     return len(command) - 1
 
 def noObviousErrors(command):
@@ -151,6 +153,7 @@ def getEncoding(command):
 
 while True:
     command = input(instructions)
+    command = command.rstrip()
     # splits on "," or ", " or " "
     command = re.split(', |,| ', command)
     res = getEncoding(command)
